@@ -1,0 +1,33 @@
+{
+  "name": "covid19-graphql-wrapper",
+  "version": "1.0.0",
+  "description": "GraphQL server for COVID-19 stats",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderMelox/COVID19-GraphQL-Wrapper.git"
+  },
+  "keywords": [
+    "coronavirus",
+    "covid-19",
+    "graphql"
+  ],
+  "author": "Alexander Melo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexanderMelox/COVID19-GraphQL-Wrapper/issues"
+  },
+  "homepage": "https://github.com/AlexanderMelox/COVID19-GraphQL-Wrapper#readme",
+  "dependencies": {
+    "apollo-server": "^2.11.0",
+    "axios": "^0.19.2",
+    "graphql": "^14.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
