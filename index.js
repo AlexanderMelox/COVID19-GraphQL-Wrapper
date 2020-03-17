@@ -56,6 +56,7 @@ async function start() {
       case(countryRegion: String!): Case!
       stats: Stats!
       meta(format: DateFormats): Meta!
+      lastUpdate: String!
     }
   `;
 
@@ -112,7 +113,13 @@ async function start() {
         };
         return meta;
       },
+      async lastUpdate() {
+        const { data } = await getBaseData();
+        const now = moment();
+        return now.from(data.lastUpdate);
+      },
     },
+
     Long: GraphQLLong,
   };
 
