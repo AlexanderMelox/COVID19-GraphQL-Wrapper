@@ -1,8 +1,8 @@
-# 🦠COVID19-GraphQL-Wrapper
+# 🦠 COVID19-GraphQL-Wrapper
 
 GraphQL wrapper for COVID-19 stats
 
-## 🚀Getting started
+## 🚀 Getting started
 
 1. Install the dependecies 
 
