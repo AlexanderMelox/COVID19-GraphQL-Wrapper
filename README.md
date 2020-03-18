@@ -1,4 +1,4 @@
-# 🦠 COVID19-GraphQL-Wrapper
+# 🦠 COVID19 GraphQL Wrapper
 
 GraphQL wrapper for COVID-19 stats
 
