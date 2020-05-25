@@ -2,11 +2,8 @@ const { ApolloServer, gql } = require('apollo-server');
 const GraphQLLong = require('graphql-type-long');
 const axios = require('axios');
 const moment = require('moment');
-
-const urls = {
-  base: 'https://covid19.mathdro.id/api',
-  cases: 'https://covid19.mathdro.id/api/confirmed',
-};
+const { urls } = require('./utils');
+const { Case } = require('./models');
 
 function getAllCases() {
   return axios.get(urls.cases);
@@ -51,24 +48,27 @@ async function start() {
       iso3: String
     }
 
+    type Country {
+      name: String!
+      iso2: String
+      iso3: String
+    }
+
     type Query {
       allCases: [Case!]!
       case(countryRegion: String!): Case!
       stats: Stats!
       meta(format: DateFormats): Meta!
       lastUpdate: String!
+      allCountries: [Country!]!
     }
   `;
 
   const resolvers = {
     Query: {
-      async allCases(_, {}) {
-        const allCases = await getAllCases();
-        const now = moment();
-        allCases.data.forEach(c => {
-          c.lastUpdate = now.from(moment(c.lastUpdate));
-        });
-        return allCases.data;
+      async allCases() {
+        const cases = await Case.getAllCases();  
+        return cases;
       },
       async case(_, { countryRegion }) {
         const allCases = await getAllCases();
@@ -118,8 +118,12 @@ async function start() {
         const now = moment();
         return now.from(data.lastUpdate);
       },
-    },
+      async allCountries() {
+        const { data: { countries } } = await axios.get(urls.countries);
 
+        return countries;
+      }
+    },
     Long: GraphQLLong,
   };
 
