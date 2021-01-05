@@ -24,7 +24,7 @@
   "homepage": "https://github.com/AlexanderMelox/COVID19-GraphQL-Wrapper#readme",
   "dependencies": {
     "apollo-server": "^2.11.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "graphql": "^14.6.0",
     "graphql-type-long": "^0.1.1",
     "moment": "^2.24.0"
